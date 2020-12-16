@@ -1,5 +1,5 @@
 //
-//  NewsCell.swift
+//  FavoritesCell.swift
 //  News Reader
 //
 //  Created by MAC on 14.12.2020.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class NewsCell: UITableViewCell {
+final class FavoritesCell: UITableViewCell {
 
     @IBOutlet private weak var bigTitleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet weak var favoritesButton: UIButton!
+    @IBOutlet private weak var removeFromFavoritesButton: UIButton!
     
     func configCell(by model: Source) {
         
@@ -19,7 +19,7 @@ final class NewsCell: UITableViewCell {
         descriptionLabel.text = model.sourceDescription
     }
     
-    @IBAction func addToFavoritesButton(sender: UIButton) {
+    @IBAction func removeButtonPressed(sender: UIButton) {
         
     }
 

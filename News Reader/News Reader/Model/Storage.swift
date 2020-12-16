@@ -11,17 +11,14 @@ struct Storage {
     
     let defaults = UserDefaults.standard
     
-    var favorites: [Source]? {
+    var favorites: [Source] {
         get {
-            guard let items = defaults.array(forKey: "favoritesList") as? [Source] else { return nil }
-            return items
+            let items = defaults.array(forKey: "favoritesList") as? [Source]
+            return items ?? []
         }
         set {
             defaults.set(newValue, forKey: "favoritesList")
         }
-        
     }
-    
     static var storage = Storage()
-    
 }

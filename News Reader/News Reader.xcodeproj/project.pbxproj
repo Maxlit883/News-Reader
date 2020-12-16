@@ -18,6 +18,8 @@
 		041A64362587BAF000DE01C2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A64352587BAF000DE01C2 /* Model.swift */; };
 		041A64392587FA5000DE01C2 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A64382587FA5000DE01C2 /* NewsCell.swift */; };
 		045675AA2588F78200EB694F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045675A92588F78200EB694F /* Storage.swift */; };
+		045675AE25891C0800EB694F /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045675AD25891C0800EB694F /* FavoritesCell.swift */; };
+		045675B325891D6300EB694F /* FullNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045675B225891D6300EB694F /* FullNewsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		041A64352587BAF000DE01C2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		041A64382587FA5000DE01C2 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		045675A92588F78200EB694F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		045675AD25891C0800EB694F /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
+		045675B225891D6300EB694F /* FullNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNewsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				041A64382587FA5000DE01C2 /* NewsCell.swift */,
+				045675AD25891C0800EB694F /* FavoritesCell.swift */,
+				045675B225891D6300EB694F /* FullNewsCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -193,11 +199,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				041A64292587B27D00DE01C2 /* NewsController.swift in Sources */,
+				045675B325891D6300EB694F /* FullNewsCell.swift in Sources */,
 				041A640D2587A8A800DE01C2 /* AppDelegate.swift in Sources */,
 				041A64332587B34000DE01C2 /* NetworkManager.swift in Sources */,
 				041A64392587FA5000DE01C2 /* NewsCell.swift in Sources */,
 				041A64362587BAF000DE01C2 /* Model.swift in Sources */,
 				045675AA2588F78200EB694F /* Storage.swift in Sources */,
+				045675AE25891C0800EB694F /* FavoritesCell.swift in Sources */,
 				041A642C2587B29200DE01C2 /* FavoritesController.swift in Sources */,
 				041A64302587B2AF00DE01C2 /* SearchController.swift in Sources */,
 			);

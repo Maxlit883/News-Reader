@@ -23,7 +23,7 @@ final class NewsController: UITableViewController {
     // MARK: - Methods
     
     private func fetchData() {
-        networkManager.fetchData { [weak self](result) in
+        networkManager.fetchData { [weak self] (result) in
             switch result {
             case .failure(let error):
                 print(error)
@@ -35,7 +35,7 @@ final class NewsController: UITableViewController {
     }
     
     @objc func addToFavorites(index: Int) {
-        Storage.storage.favorites?.append(chanelList[index])
+        Storage.storage.favorites.append(chanelList[index])
     }
     
 }
@@ -51,8 +51,7 @@ extension NewsController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCellIdentifier", for: indexPath) as? NewsCell
-        cell?.bigTitleLabel.text = chanelList[indexPath.row].name
-        cell?.descriptionLabel.text = chanelList[indexPath.row].id
+        cell?.configCell(by: chanelList[indexPath.row])
         
         cell?.favoritesButton.addTarget(self, action: #selector(addToFavorites(index:)), for: .touchUpInside)
         
