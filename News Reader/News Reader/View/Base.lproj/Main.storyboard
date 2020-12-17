@@ -11,13 +11,13 @@
         <!--News Reader-->
         <scene sceneID="fup-Vi-chs">
             <objects>
-                <tableViewController id="Gpo-l9-VBf" customClass="NewsController" customModule="News_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Gpo-l9-VBf" customClass="SourcesController" customModule="News_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9SF-5s-WT7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsCellIdentifier" rowHeight="193" id="tVu-pE-QTh" customClass="NewsCell" customModule="News_Reader" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SourcesCellIdentifier" rowHeight="193" id="tVu-pE-QTh" customClass="SourcesCell" customModule="News_Reader" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="193"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tVu-pE-QTh" id="6Vy-Dz-FEq">
@@ -165,7 +165,7 @@
                     <navigationItem key="navigationItem" title="Favorites" id="xRm-bT-hdw">
                         <barButtonItem key="rightBarButtonItem" title="Show news" id="vAP-3P-KWz">
                             <connections>
-                                <segue destination="IDZ-Eh-TFA" kind="show" id="gSv-oZ-NZV"/>
+                                <segue destination="IDZ-Eh-TFA" kind="show" identifier="ToNews" id="gSv-oZ-NZV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -177,13 +177,13 @@
         <!--News Reader-->
         <scene sceneID="SVy-Wh-Ruj">
             <objects>
-                <tableViewController id="IDZ-Eh-TFA" sceneMemberID="viewController">
+                <tableViewController id="IDZ-Eh-TFA" customClass="FullNewsController" customModule="News_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="f66-Ja-8a5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="BPY-YJ-0x5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FullNewsIdentifier" id="BPY-YJ-0x5" customClass="FullNewsCell" customModule="News_Reader" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BPY-YJ-0x5" id="JRm-52-i66">
@@ -201,7 +201,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQR-49-Cs5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="835" y="1107"/>
+            <point key="canvasLocation" x="834.78260869565224" y="1106.9196428571429"/>
         </scene>
         <!--Search-->
         <scene sceneID="mHi-D0-Udh">

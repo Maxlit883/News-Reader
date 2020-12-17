@@ -8,13 +8,12 @@
 import Foundation
 
 // MARK: - Main
-struct Chanels: Codable {
-    let status: String
+struct ChanelData: Codable {
     let sources: [Source]
 }
 
 // MARK: - Source
-struct Source: Codable {
+struct Source: Codable, Hashable {
     let id, name, sourceDescription: String
     let url: String
     let language, country: String
@@ -25,3 +24,21 @@ struct Source: Codable {
         case url, language, country
     }
 }
+
+// MARK: - News
+struct NewsData: Codable {
+    let status: String
+    let totalResults: Int
+    let articles: [Article]
+}
+
+// MARK: - Article
+struct Article: Codable, Hashable {
+    let title, description: String
+    let url: String
+    let urlToImage: String
+    let publishedAt, content: String
+
+}
+
+

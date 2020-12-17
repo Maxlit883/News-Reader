@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NewsController: UITableViewController {
+final class SourcesController: UITableViewController {
     
     // MARK: - Properties
     var chanelList: [Source] = []
@@ -18,12 +18,13 @@ final class NewsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
+
     }
     
     // MARK: - Methods
     
     private func fetchData() {
-        networkManager.fetchData { [weak self] (result) in
+        networkManager.fetchDataResources { [weak self] (result) in
             switch result {
             case .failure(let error):
                 print(error)
@@ -34,13 +35,13 @@ final class NewsController: UITableViewController {
         }
     }
     
-    @objc func addToFavorites(index: Int) {
-        Storage.storage.favorites.append(chanelList[index])
-    }
-    
 }
 
-extension NewsController {
+extension SourcesController: CelllDelegateProtocol {
+    
+    func addToFavorites(index: Int) {
+        Storage.storage.addToFavorites(item: chanelList[index])
+    }
     
     // MARK: - Table view data source
     
@@ -50,10 +51,10 @@ extension NewsController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCellIdentifier", for: indexPath) as? NewsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SourcesCellIdentifier", for: indexPath) as? SourcesCell
         cell?.configCell(by: chanelList[indexPath.row])
-        
-        cell?.favoritesButton.addTarget(self, action: #selector(addToFavorites(index:)), for: .touchUpInside)
+        cell?.favoritesButton.tag = indexPath.row
+        cell?.cellDelegate = self
         
         
         return cell!
