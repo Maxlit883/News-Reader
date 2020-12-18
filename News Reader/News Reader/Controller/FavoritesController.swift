@@ -10,46 +10,73 @@ import UIKit
 final class FavoritesController: UITableViewController {
 
     var favoritesList: [Source] = []
+    var rows: [Row] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        rows = Storage.storage.getFavorites().map { Row.favoriteItem(source: $0) }
         favoritesList = Storage.storage.getFavorites()
         tableView.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ToNews" {
-            let vc = segue.destination as! FullNewsController
-            vc.chanelsList = favoritesList
-        }
-    }
+
 }
 
 
 // MARK: - Table view data source
 
-extension FavoritesController: RemoveCellProtocol {
+extension FavoritesController {
     
     func removeFromFavorites(index: Int) {
         Storage.storage.removeFromFavorites(index: index)
-        tableView.reloadData()
+        tableView.beginUpdates()
+        
+        rows.remove(at: index)
+        
+        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+        
+        tableView.endUpdates()
     }
     
         
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        favoritesList.count
+        rows.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCellIdentifier", for: indexPath) as? FavoritesCell
-        cell?.configCell(by: favoritesList[indexPath.row])
-        cell?.removeFromFavoritesButton.tag = indexPath.row
+        switch rows[indexPath.row] {
+        case .favoriteItem(let item):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCellIdentifier", for: indexPath) as! FavoritesCell
+            cell.configCell(by: item)
+            
+            cell.onRemove = { [unowned self, item] in
+
+                let itemIndex = self.rows.firstIndex(where: {
+                    switch $0 {
+                    case .favoriteItem(let source) where source == item:
+                        return true
+                    default:
+                        return false
+                    }
+                })
+                guard let index = itemIndex else { return }
+                
+                self.removeFromFavorites(index: index)
+            }
+            
+            return cell
+        }
         
-        cell?.cellDelegate = self
         
-        return cell!
     }
     
+}
 
+extension FavoritesController {
+    
+    enum Row {
+        case favoriteItem(source: Source)
+    }
+    
 }

@@ -9,26 +9,19 @@ import UIKit
 
 final class FullNewsController: UITableViewController {
 
-    var chanelsList: [Source] = []
     var newsList: [Article] = []
-    
+    var favoritesList: [Source] = Storage.storage.getFavorites()
     let networkManager = NetworkManager()
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchData()
     }
     
     private func fetchData() {
-        networkManager.fetchDataNews(source: chanelsList) { [weak self] (result) in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let list):
-                self?.newsList.append(contentsOf: list)
-                self?.tableView.reloadData()
-            }
+        networkManager.fetchDataNews(favorites: favoritesList) { news in
+            self.newsList = news
+            self.tableView.reloadData()
         }
     }
 }

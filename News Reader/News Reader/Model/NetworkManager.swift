@@ -40,34 +40,38 @@ final class NetworkManager {
         }.resume()
     }
     
-    func fetchDataNews(source: [Source], completion: @escaping (Result<[Article], Error>)->()) {
+    func fetchDataNews(favorites: [Source], completion: @escaping ([Article])->()) {
         
-        for s in source {
+        let decoder = JSONDecoder()
+        let favoritesID = favorites.map { $0.id }
+        var newsList: [Article] = []
+        
+        let group = DispatchGroup()
+        
+        for id in favoritesID {
+            group.enter()
             
-            let urlStr = baseURL + requestForNews + s.id + apiKey
-            
+            let urlStr = baseURL + requestForNews + id + apiKey
             guard let url = URL(string: urlStr) else { return }
             
-            let decoder = JSONDecoder()
-            
             let session = URLSession.shared
-            session.dataTask(with: url) {  data, response, error in
-                
-                OperationQueue.main.addOperation {
-                    if let error = error {
-                        completion(.failure(error))
-                    } else if let data = data {
-                        do {
-                            let decodedData = try decoder.decode(NewsData.self, from: data)
-                            completion(.success(decodedData.articles))
-                        } catch {
-                            completion(.failure(error))
-                        }
+            session.dataTask(with: url) {  data, _, error in
+                defer {
+                    group.leave()
+                }
+                if let data = data {
+                    do {
+                        let decodedData = try decoder.decode(NewsData.self, from: data)
+                        newsList.append(contentsOf: decodedData.articles)
+                    } catch {
+                        print("Catch in fetch \(error)")
                     }
                 }
             }.resume()
         }
-        
+        group.notify(queue: .main) {
+            completion(newsList)
+        }
     }
     
 }

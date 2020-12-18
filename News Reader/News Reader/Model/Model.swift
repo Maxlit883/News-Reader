@@ -14,31 +14,24 @@ struct ChanelData: Codable {
 
 // MARK: - Source
 struct Source: Codable, Hashable {
-    let id, name, sourceDescription: String
+    let id, name, description: String
     let url: String
     let language, country: String
-
-    enum CodingKeys: String, CodingKey {
-        case id, name
-        case sourceDescription = "description"
-        case url, language, country
+    
+    static func == (lhs: Source, rhs: Source) -> Bool {
+        lhs.id == rhs.id
     }
 }
 
 // MARK: - News
 struct NewsData: Codable {
-    let status: String
-    let totalResults: Int
     let articles: [Article]
 }
 
 // MARK: - Article
 struct Article: Codable, Hashable {
     let title, description: String
-    let url: String
-    let urlToImage: String
-    let publishedAt, content: String
-
+    let urlToImage: String?
 }
 
 

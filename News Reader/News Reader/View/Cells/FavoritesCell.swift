@@ -13,17 +13,20 @@ final class FavoritesCell: UITableViewCell {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet weak var removeFromFavoritesButton: UIButton!
         
-    var cellDelegate: RemoveCellProtocol?
+    let highlitedImage = UIImage(named: "icons8-garbage_truck")
+
+    
+    var onRemove: (()->())?
     
     func configCell(by model: Source) {
-        
         bigTitleLabel.text = model.name
-        descriptionLabel.text = model.sourceDescription
+        descriptionLabel.text = model.description
+        self.removeFromFavoritesButton.setImage(highlitedImage, for: .highlighted)
         
     }
     
     @IBAction func removeButtonPressed(sender: UIButton) {
-        cellDelegate?.removeFromFavorites(index: sender.tag)
+        onRemove?()
     }
 
 }

@@ -11,8 +11,5 @@ protocol CelllDelegateProtocol {
     func addToFavorites(index: Int)
 }
 
-protocol RemoveCellProtocol {
-    func removeFromFavorites(index: Int)
-}
 
 

@@ -14,10 +14,13 @@ final class SourcesCell: UITableViewCell {
     @IBOutlet weak var favoritesButton: UIButton!
     
     var cellDelegate: CelllDelegateProtocol?
+    let highlitedImage = UIImage(named: "icons8-star-1")
     
     func configCell(by model: Source) {
         bigTitleLabel.text = model.name
-        descriptionLabel.text = model.sourceDescription
+        descriptionLabel.text = model.description
+        self.favoritesButton.setImage(highlitedImage, for: .highlighted)
+
     }
     
     @IBAction func addToFavoritesButton(sender: UIButton) {
