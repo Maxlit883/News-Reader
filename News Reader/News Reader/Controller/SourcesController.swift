@@ -11,6 +11,7 @@ final class SourcesController: UITableViewController {
     
     // MARK: - Properties
     var chanelList: [Source] = []
+    var favoritesList: [Source] = []
     let networkManager = NetworkManager()
     
     // MARK: - Lifecycle
@@ -19,6 +20,12 @@ final class SourcesController: UITableViewController {
         super.viewDidLoad()
         fetchData()
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        favoritesList = MemoryManager.storage.getFavorites()
+        tableView.reloadData()
     }
     
     // MARK: - Methods
@@ -34,13 +41,14 @@ final class SourcesController: UITableViewController {
             }
         }
     }
-    
 }
 
 extension SourcesController: CelllDelegateProtocol {
     
     func addToFavorites(index: Int) {
-        Storage.storage.addToFavorites(item: chanelList[index])
+        MemoryManager.storage.addToFavorites(item: chanelList[index])
+        favoritesList.append(chanelList[index])
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -50,14 +58,17 @@ extension SourcesController: CelllDelegateProtocol {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let source = chanelList[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SourcesCellIdentifier", for: indexPath) as? SourcesCell
-        cell?.configCell(by: chanelList[indexPath.row])
-        cell?.favoritesButton.tag = indexPath.row
-        cell?.cellDelegate = self
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SourcesCellIdentifier", for: indexPath) as! SourcesCell
+        cell.configCell(by: source)
+        cell.favoritesContainsSource(source, in: favoritesList)
+        cell.favoritesButton.tag = indexPath.row
+        cell.cellDelegate = self
         
+
         
-        return cell!
+        return cell
     }
     
     // MARK: - Table view delegate

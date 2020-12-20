@@ -15,12 +15,19 @@ final class SourcesCell: UITableViewCell {
     
     var cellDelegate: CelllDelegateProtocol?
     let highlitedImage = UIImage(named: "icons8-star-1")
+    let usualImage = UIImage(named: "icons8-add_to_favorites")
     
     func configCell(by model: Source) {
         bigTitleLabel.text = model.name
         descriptionLabel.text = model.description
-        self.favoritesButton.setImage(highlitedImage, for: .highlighted)
-
+    }
+    
+    func favoritesContainsSource(_ source: Source, in array: [Source]) {
+        if array.contains(source) {
+            self.favoritesButton.setImage(highlitedImage, for: .normal)
+        } else {
+            self.favoritesButton.setImage(usualImage, for: .normal)
+        }
     }
     
     @IBAction func addToFavoritesButton(sender: UIButton) {

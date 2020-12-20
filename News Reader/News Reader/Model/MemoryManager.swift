@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Storage {
+struct MemoryManager {
     
     let defaults = UserDefaults.standard
     
     let encoder = PropertyListEncoder()
     let decoder = PropertyListDecoder()
     
-    static var storage = Storage()
+    static var storage = MemoryManager()
     
     private var favorites: [Source] {
         get {
@@ -53,6 +53,8 @@ struct Storage {
     mutating func removeFromFavorites(index: Int) {
         favorites.remove(at: index)
     }
+    
+    
     
 // MARK: -- Methods for working with news
     

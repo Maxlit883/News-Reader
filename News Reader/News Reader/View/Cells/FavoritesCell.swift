@@ -13,7 +13,7 @@ final class FavoritesCell: UITableViewCell {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet weak var removeFromFavoritesButton: UIButton!
         
-    let highlitedImage = UIImage(named: "icons8-garbage_truck")
+    let highlitedImage = UIImage(named: "icons8-trash-1")
 
     
     var onRemove: (()->())?

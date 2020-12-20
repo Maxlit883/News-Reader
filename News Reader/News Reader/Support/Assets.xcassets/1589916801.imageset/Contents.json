@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "icons8-garbage_truck.pdf",
+      "filename" : "1589916801.jpg",
       "idiom" : "universal"
     }
   ],
@@ -10,6 +10,6 @@
     "version" : 1
   },
   "properties" : {
-    "template-rendering-intent" : "template"
+    "template-rendering-intent" : "original"
   }
 }

@@ -14,8 +14,8 @@ final class FavoritesController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        rows = Storage.storage.getFavorites().map { Row.favoriteItem(source: $0) }
-        favoritesList = Storage.storage.getFavorites()
+        rows = MemoryManager.storage.getFavorites().map { Row.favoriteItem(source: $0) }
+        favoritesList = MemoryManager.storage.getFavorites()
         tableView.reloadData()
     }
     
@@ -28,7 +28,7 @@ final class FavoritesController: UITableViewController {
 extension FavoritesController {
     
     func removeFromFavorites(index: Int) {
-        Storage.storage.removeFromFavorites(index: index)
+        MemoryManager.storage.removeFromFavorites(index: index)
         tableView.beginUpdates()
         
         rows.remove(at: index)
@@ -64,7 +64,7 @@ extension FavoritesController {
                 
                 self.removeFromFavorites(index: index)
             }
-            
+
             return cell
         }
         

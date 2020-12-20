@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="KGk-i7-Jjw" customClass="FullNewsXibCell" customModule="News_Reader" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="497" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="497" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GCA-Hq-PeX">
+                        <rect key="frame" x="0.0" y="5" width="497" height="290"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="We2-Om-gkk" customClass="GradientView" customModule="News_Reader" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="45" width="497" height="250"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="AfA-Pa-ywg">
+                                <rect key="frame" x="5" y="160" width="487" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iu-wI-W4P">
+                                        <rect key="frame" x="0.0" y="0.0" width="487" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jkd-Uq-zyO">
+                                        <rect key="frame" x="0.0" y="41" width="487" height="19"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="AfA-Pa-ywg" secondAttribute="bottom" constant="30" id="6rx-GJ-913"/>
+                            <constraint firstAttribute="trailing" secondItem="AfA-Pa-ywg" secondAttribute="trailing" constant="5" id="E3o-kW-zmQ"/>
+                            <constraint firstAttribute="height" constant="250" id="Yjp-my-Yvl"/>
+                            <constraint firstItem="AfA-Pa-ywg" firstAttribute="leading" secondItem="We2-Om-gkk" secondAttribute="leading" constant="5" id="uaV-pR-aTo"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="GCA-Hq-PeX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="1D0-1o-szF"/>
+                    <constraint firstAttribute="bottom" secondItem="We2-Om-gkk" secondAttribute="bottom" constant="5" id="6zu-c2-9It"/>
+                    <constraint firstAttribute="trailing" secondItem="GCA-Hq-PeX" secondAttribute="trailing" id="Aml-pk-uid"/>
+                    <constraint firstAttribute="bottom" secondItem="GCA-Hq-PeX" secondAttribute="bottom" constant="5" id="B7B-JK-CE6"/>
+                    <constraint firstItem="GCA-Hq-PeX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ur1-Un-f0C"/>
+                    <constraint firstAttribute="trailing" secondItem="We2-Om-gkk" secondAttribute="trailing" id="Weg-oQ-h6h"/>
+                    <constraint firstItem="We2-Om-gkk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="icD-Aw-C3Q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="Jkd-Uq-zyO" id="hXO-e9-ceA"/>
+                <outlet property="mainImage" destination="GCA-Hq-PeX" id="LEI-G2-NHF"/>
+                <outlet property="titleLabel" destination="1iu-wI-W4P" id="hj7-b9-qMn"/>
+            </connections>
+            <point key="canvasLocation" x="245.6521739130435" y="71.651785714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
