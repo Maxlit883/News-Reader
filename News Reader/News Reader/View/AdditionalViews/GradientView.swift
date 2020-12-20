@@ -1,19 +1,20 @@
 //
 //  GradientView.swift
-//  MaxCollectionViewVol2
+//  News Reader
 //
-//  Created by Dmitriy Yurchenko on 23.06.2020.
-//  Copyright © 2020 Dmitriy Yurchenko. All rights reserved.
+//  Created by MAC on 19.12.2020.
 //
 
 import UIKit
 
 final class GradientView: UIView {
 
-    lazy var gradientLayer: CAGradientLayer = {
+// MARK: - Private Properties
+    
+    lazy private var gradientLayer: CAGradientLayer = {
         
         let color1 = UIColor.clear.cgColor
-        let color2 = UIColor.init(white: 0.0, alpha: 1).cgColor
+        let color2 = UIColor.init(white: 0.0, alpha: 0.8).cgColor
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [color1, color2]
@@ -23,10 +24,13 @@ final class GradientView: UIView {
         return gradientLayer
     }()
     
+// MARK: - Lifecycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = UIColor.clear
         gradientLayer.frame = bounds
+        backgroundColor = UIColor.clear
+        
         layer.addSublayer(gradientLayer)
     }
 }

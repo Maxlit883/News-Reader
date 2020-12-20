@@ -9,26 +9,25 @@ import UIKit
 
 final class SearchController: UITableViewController {
     
-    // MARK: - IBOutlets
+// MARK: - IBOutlets
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
-    // MARK: - Properties
-    var newsList: [Article] = []
-    let networkManager = NetworkManager()
+// MARK: - Private Properties
     
-    // MARK: - Lifecycle
+    private var newsList: [Article] = []
+    private let networkManager = NetworkManager()
+    
+// MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
     }
-    
-    // MARK: - Methods
-    
-    
 }
 
 // MARK: - Table view data source
+
 extension SearchController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,8 +37,8 @@ extension SearchController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCellIdentifier", for: indexPath) as! SearchCell
-        cell.titleLabel.text = newsList[indexPath.row].title
-        cell.descriptionLabel.text = newsList[indexPath.row].description
+        cell.titleLabel.text = newsList[indexPath.row].title.withoutHtml
+        cell.descriptionLabel.text = newsList[indexPath.row].description.withoutHtml
         
         return cell
     }
@@ -52,6 +51,7 @@ extension SearchController {
 }
 
 // MARK: - Search bar delegate
+
 extension SearchController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

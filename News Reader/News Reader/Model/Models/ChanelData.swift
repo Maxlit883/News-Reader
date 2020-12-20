@@ -8,5 +8,7 @@
 import Foundation
 
 struct ChanelData: Codable {
+    
     let sources: [Source]
+    
 }

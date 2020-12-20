@@ -8,6 +8,7 @@
 import Foundation
 
 struct Source: Codable, Hashable {
+    
     let id, name, description: String
     let url: String
     let language, country: String
@@ -15,4 +16,5 @@ struct Source: Codable, Hashable {
     static func == (lhs: Source, rhs: Source) -> Bool {
         lhs.id == rhs.id
     }
+    
 }

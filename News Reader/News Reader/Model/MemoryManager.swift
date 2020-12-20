@@ -9,12 +9,16 @@ import Foundation
 
 struct MemoryManager {
     
-    let defaults = UserDefaults.standard
-    
-    let encoder = PropertyListEncoder()
-    let decoder = PropertyListDecoder()
+// MARK: - Public Properties
     
     static var storage = MemoryManager()
+    
+// MARK: - Private Properties
+    
+    private let defaults = UserDefaults.standard
+    private let encoder = PropertyListEncoder()
+    private let decoder = PropertyListDecoder()
+    
     
     private var favorites: [Source] {
         get {
@@ -40,7 +44,7 @@ struct MemoryManager {
         }
     }
     
-// MARK: -- Methods for working with favorites
+// MARK: - Public Methods for working with favorites
     
     func getFavorites()-> [Source] {
         return favorites
@@ -56,7 +60,7 @@ struct MemoryManager {
     
     
     
-// MARK: -- Methods for working with news
+// MARK: - Public Methods for working with news
     
     func getNews()-> [Article] {
         return newsOffline

@@ -9,8 +9,12 @@ import UIKit
 
 final class FavoritesController: UITableViewController {
 
-    var favoritesList: [Source] = []
-    var rows: [Row] = []
+// MARK: - Private Properties
+    
+    private var favoritesList: [Source] = []
+    private var rows: [Row] = []
+    
+// MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -18,10 +22,7 @@ final class FavoritesController: UITableViewController {
         favoritesList = MemoryManager.storage.getFavorites()
         tableView.reloadData()
     }
-    
-
 }
-
 
 // MARK: - Table view data source
 
@@ -29,16 +30,15 @@ extension FavoritesController {
     
     func removeFromFavorites(index: Int) {
         MemoryManager.storage.removeFromFavorites(index: index)
+        
         tableView.beginUpdates()
         
         rows.remove(at: index)
-        
-        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .top)
         
         tableView.endUpdates()
     }
     
-        
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         rows.count
     }
@@ -64,13 +64,9 @@ extension FavoritesController {
                 
                 self.removeFromFavorites(index: index)
             }
-
             return cell
         }
-        
-        
     }
-    
 }
 
 extension FavoritesController {

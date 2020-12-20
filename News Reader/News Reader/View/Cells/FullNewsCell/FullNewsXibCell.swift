@@ -9,12 +9,20 @@ import UIKit
 
 final class FullNewsXibCell: UITableViewCell {
 
-    @IBOutlet weak var mainImage: UIImageView!
+// MARK: - Outlets
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var mainImage: PrefetchableImageView!
+    @IBOutlet weak var bigTitleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+// MARK: - Lifecycle
     
-
-    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        mainImage.image = nil
+        bigTitleLabel.text = ""
+        descriptionLabel.text = ""
+    }
 }
+

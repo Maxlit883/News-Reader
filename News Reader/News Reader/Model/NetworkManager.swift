@@ -9,19 +9,22 @@ import Foundation
 
 final class NetworkManager {
     
+// MARK: - Private Properties
+    
     private let baseURL = "https://newsapi.org/v2/"
     private let requestForSources = "sources?language=ru"
     private let requestForNews = "top-headlines?sources="
     private let requestForSearch = "everything?q="
     private let apiKey = "&apiKey=ca2bd634332f4932b0d2604c6514d176"
     
+// MARK: - Public Methods
+    
     func fetchDataResources(completion: @escaping (Result<[Source], Error>)->()) {
         
-        let urlStr = baseURL + requestForSources + apiKey
-        
-        guard let url = URL(string: urlStr) else { return }
-        
         let decoder = JSONDecoder()
+       
+        let urlStr = baseURL + requestForSources + apiKey
+        guard let url = URL(string: urlStr) else { return }
         
         let session = URLSession.shared
         session.dataTask(with: url) {  data, _, error in
@@ -79,9 +82,11 @@ final class NetworkManager {
         let decoder = JSONDecoder()
         
         let urlStr = baseURL + requestForSearch + keyword + apiKey
+        
         guard let encodedKeyword = urlStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
               let url = URL(string: encodedKeyword) else { return }
-        
+        print(url)
+
         let session = URLSession.shared
         session.dataTask(with: url) {  data, _, error in
             
@@ -98,7 +103,6 @@ final class NetworkManager {
                 }
             }
         }.resume()
-        
     }
     
 }

@@ -8,5 +8,7 @@
 import Foundation
 
 struct NewsData: Codable {
+    
     let articles: [Article]
+
 }
