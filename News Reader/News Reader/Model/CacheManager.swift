@@ -16,8 +16,8 @@ struct CacheManager {
 // MARK: - Private Properties
     
     private let defaults = UserDefaults.standard
-    private let encoder = PropertyListEncoder()
-    private let decoder = PropertyListDecoder()
+    private let encoder = JSONEncoder()
+    private let decoder = JSONDecoder()
     
     private var favorites: [Source] {
         get {
@@ -64,7 +64,9 @@ struct CacheManager {
     }
     
     mutating func saveNews(items: [Article]) {
+        if items != [] {
         newsOffline = items
+        }
     }
     
 }

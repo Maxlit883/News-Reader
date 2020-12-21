@@ -48,9 +48,6 @@ final class FavoritesController: UITableViewController {
     
 }
 
-
-
-
 // MARK: - Table view data source
 
 extension FavoritesController {

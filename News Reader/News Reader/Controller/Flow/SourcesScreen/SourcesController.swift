@@ -9,16 +9,17 @@ import UIKit
 
 final class SourcesController: UITableViewController {
     
-// MARK: - Private Properties
+    // MARK: - Private Properties
     
     private var chanelList: [Source] = []
     private var favoritesList: [Source] = []
     private let networkManager = NetworkManager()
     
-// MARK: - Lifecycle
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureRefreshControl()
         fetchData()
     }
     
@@ -28,9 +29,13 @@ final class SourcesController: UITableViewController {
         tableView.reloadData()
     }
     
-// MARK: - Private Methods
+    // MARK: - Private Methods
     
     private func fetchData() {
+        
+        let activityIndicator = ActivityIndicator.createIndicator(view: view)
+        activityIndicator.startAnimating()
+        
         networkManager.fetchDataResources { [weak self] (result) in
             switch result {
             case .failure(let error):
@@ -39,6 +44,7 @@ final class SourcesController: UITableViewController {
                 self?.chanelList = list
                 self?.tableView.reloadData()
             }
+            activityIndicator.stopAnimating()
         }
     }
 }
@@ -53,7 +59,7 @@ extension SourcesController: CelllDelegateProtocol {
         tableView.reloadData()
     }
     
-// MARK: - Table view data source
+    // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         chanelList.count
@@ -69,6 +75,20 @@ extension SourcesController: CelllDelegateProtocol {
         cell.cellDelegate = self
         
         return cell
+    }
+    
+// MARK: - Refresh control
+    
+    func configureRefreshControl () {
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+        fetchData()
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
     
 }

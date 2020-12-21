@@ -61,6 +61,11 @@ extension SearchController {
 extension SearchController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let activityIndicator = ActivityIndicator.createIndicator(view: view)
+        
+        activityIndicator.startAnimating()
+        
         guard let keyword = searchBar.text else { return }
         
         self.networkManager.fetchNewsByKeywords(keyword: keyword) { [weak self] (result) in
@@ -75,6 +80,7 @@ extension SearchController: UISearchBarDelegate {
                 self?.searchBar.endEditing(true)
             }
         }
+        activityIndicator.stopAnimating()
     }
     
 }

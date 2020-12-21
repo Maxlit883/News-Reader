@@ -29,7 +29,7 @@ final class FullNewsController: UITableViewController {
     
     private func fetchData() {
         networkManager.fetchDataNews(favorites: favoritesList) { news in
-            self.newsList = news
+            self.newsList += news
             CacheManager.shared.saveNews(items: news)
             
             self.tableView.reloadData()

@@ -21,6 +21,7 @@
 		0459D868258BCD8C007A6F7B /* CelllDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459D867258BCD8C007A6F7B /* CelllDelegateProtocol.swift */; };
 		0459D86F258BF288007A6F7B /* FullNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459D86E258BF288007A6F7B /* FullNewsController.swift */; };
 		0459D872258BF2B2007A6F7B /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459D871258BF2B2007A6F7B /* SearchCell.swift */; };
+		045FC58B259136B6003D9CDD /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FC58A259136B6003D9CDD /* ActivityIndicator.swift */; };
 		04631F49258F455600D96ADF /* FullNewsXibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04631F47258F455600D96ADF /* FullNewsXibCell.swift */; };
 		04631F4A258F455600D96ADF /* FullNewsXibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04631F48258F455600D96ADF /* FullNewsXibCell.xib */; };
 		04631F54258F976F00D96ADF /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04631F53258F976F00D96ADF /* Article.swift */; };
@@ -49,6 +50,7 @@
 		0459D867258BCD8C007A6F7B /* CelllDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelllDelegateProtocol.swift; sourceTree = "<group>"; };
 		0459D86E258BF288007A6F7B /* FullNewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNewsController.swift; sourceTree = "<group>"; };
 		0459D871258BF2B2007A6F7B /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		045FC58A259136B6003D9CDD /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		04631F47258F455600D96ADF /* FullNewsXibCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNewsXibCell.swift; sourceTree = "<group>"; };
 		04631F48258F455600D96ADF /* FullNewsXibCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullNewsXibCell.xib; sourceTree = "<group>"; };
 		04631F53258F976F00D96ADF /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
@@ -113,7 +115,6 @@
 			children = (
 				041A64122587A8A800DE01C2 /* Main.storyboard */,
 				04631F50258F964200D96ADF /* AdditionalViews */,
-				045675A7258891AA00EB694F /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -121,11 +122,7 @@
 		041A64252587A9A100DE01C2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				041A64282587B27D00DE01C2 /* SourcesController.swift */,
-				041A642B2587B29200DE01C2 /* FavoritesController.swift */,
-				0459D86E258BF288007A6F7B /* FullNewsController.swift */,
-				041A642F2587B2AF00DE01C2 /* SearchController.swift */,
-				0459D866258BCD72007A6F7B /* Protocols */,
+				045FC58425912725003D9CDD /* Flow */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -141,17 +138,6 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		045675A7258891AA00EB694F /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				041A64382587FA5000DE01C2 /* SourcesCell.swift */,
-				045675AD25891C0800EB694F /* FavoritesCell.swift */,
-				04631F4F258F961300D96ADF /* FullNewsCell */,
-				0459D871258BF2B2007A6F7B /* SearchCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		0459D866258BCD72007A6F7B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,13 +146,53 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		04631F4F258F961300D96ADF /* FullNewsCell */ = {
+		045FC58425912725003D9CDD /* Flow */ = {
 			isa = PBXGroup;
 			children = (
-				04631F48258F455600D96ADF /* FullNewsXibCell.xib */,
-				04631F47258F455600D96ADF /* FullNewsXibCell.swift */,
+				045FC5852591272E003D9CDD /* SourcesScreen */,
+				045FC5862591274B003D9CDD /* FavoritesScreen */,
+				045FC58725912758003D9CDD /* NewsScreen */,
+				045FC58825912763003D9CDD /* SearchScreen */,
+				0459D866258BCD72007A6F7B /* Protocols */,
 			);
-			path = FullNewsCell;
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		045FC5852591272E003D9CDD /* SourcesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				041A64282587B27D00DE01C2 /* SourcesController.swift */,
+				041A64382587FA5000DE01C2 /* SourcesCell.swift */,
+			);
+			path = SourcesScreen;
+			sourceTree = "<group>";
+		};
+		045FC5862591274B003D9CDD /* FavoritesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				041A642B2587B29200DE01C2 /* FavoritesController.swift */,
+				045675AD25891C0800EB694F /* FavoritesCell.swift */,
+			);
+			path = FavoritesScreen;
+			sourceTree = "<group>";
+		};
+		045FC58725912758003D9CDD /* NewsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0459D86E258BF288007A6F7B /* FullNewsController.swift */,
+				04631F47258F455600D96ADF /* FullNewsXibCell.swift */,
+				04631F48258F455600D96ADF /* FullNewsXibCell.xib */,
+			);
+			path = NewsScreen;
+			sourceTree = "<group>";
+		};
+		045FC58825912763003D9CDD /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				041A642F2587B2AF00DE01C2 /* SearchController.swift */,
+				0459D871258BF2B2007A6F7B /* SearchCell.swift */,
+			);
+			path = SearchScreen;
 			sourceTree = "<group>";
 		};
 		04631F50258F964200D96ADF /* AdditionalViews */ = {
@@ -174,6 +200,7 @@
 			children = (
 				04631F61258FA1DF00D96ADF /* PrefetchableImageView.swift */,
 				0468EB71258CF6F80035C030 /* GradientView.swift */,
+				045FC58A259136B6003D9CDD /* ActivityIndicator.swift */,
 			);
 			path = AdditionalViews;
 			sourceTree = "<group>";
@@ -268,6 +295,7 @@
 			files = (
 				04631F57258F979900D96ADF /* ChanelData.swift in Sources */,
 				0459D872258BF2B2007A6F7B /* SearchCell.swift in Sources */,
+				045FC58B259136B6003D9CDD /* ActivityIndicator.swift in Sources */,
 				041A64292587B27D00DE01C2 /* SourcesController.swift in Sources */,
 				041A640D2587A8A800DE01C2 /* AppDelegate.swift in Sources */,
 				0468EB72258CF6F80035C030 /* GradientView.swift in Sources */,
