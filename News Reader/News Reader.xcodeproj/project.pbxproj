@@ -130,10 +130,10 @@
 		041A64262587A9A900DE01C2 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				041A640C2587A8A800DE01C2 /* AppDelegate.swift */,
+				041A64152587A8A900DE01C2 /* Assets.xcassets */,
 				041A641A2587A8A900DE01C2 /* Info.plist */,
 				041A64172587A8A900DE01C2 /* LaunchScreen.storyboard */,
-				041A64152587A8A900DE01C2 /* Assets.xcassets */,
-				041A640C2587A8A800DE01C2 /* AppDelegate.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";

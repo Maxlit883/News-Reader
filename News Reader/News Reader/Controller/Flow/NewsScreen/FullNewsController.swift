@@ -17,12 +17,12 @@ final class FullNewsController: UITableViewController {
     
     // MARK: - Lifecycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         tableView.register(UINib(nibName: "FullNewsXibCell", bundle: nil), forCellReuseIdentifier: "FullNewsXibCell")
-        fetchData()
         
+        fetchData()
     }
     
     // MARK: - Private Methods
