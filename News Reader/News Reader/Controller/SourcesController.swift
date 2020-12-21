@@ -24,7 +24,7 @@ final class SourcesController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        favoritesList = MemoryManager.storage.getFavorites()
+        favoritesList = CacheManager.shared.getFavorites()
         tableView.reloadData()
     }
     
@@ -48,7 +48,7 @@ final class SourcesController: UITableViewController {
 extension SourcesController: CelllDelegateProtocol {
     
     func addToFavorites(index: Int) {
-        MemoryManager.storage.addToFavorites(item: chanelList[index])
+        CacheManager.shared.addToFavorites(item: chanelList[index])
         favoritesList.append(chanelList[index])
         tableView.reloadData()
     }

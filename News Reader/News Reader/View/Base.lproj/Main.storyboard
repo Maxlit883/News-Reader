@@ -130,6 +130,7 @@
                                                         <constraint firstAttribute="height" constant="20" id="EzZ-LG-eKt"/>
                                                         <constraint firstAttribute="width" constant="20" id="kqr-4p-zzh"/>
                                                     </constraints>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
                                                     <state key="normal" image="icons8-trash"/>
                                                     <connections>
                                                         <action selector="removeButtonPressedWithSender:" destination="99z-HC-cqX" eventType="touchUpInside" id="Bbh-gy-pcp"/>
@@ -166,13 +167,10 @@
                             <outlet property="delegate" destination="WZo-w3-eBm" id="yfJ-tU-BVC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="xRm-bT-hdw">
-                        <barButtonItem key="rightBarButtonItem" title="Show news" id="vAP-3P-KWz">
-                            <connections>
-                                <segue destination="IDZ-Eh-TFA" kind="show" identifier="ToNews" id="gSv-oZ-NZV"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Favorites" id="xRm-bT-hdw"/>
+                    <connections>
+                        <segue destination="IDZ-Eh-TFA" kind="show" identifier="FavoritesToNews" id="mId-oi-WPO"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zBd-ya-zzS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -182,7 +180,7 @@
         <scene sceneID="SVy-Wh-Ruj">
             <objects>
                 <tableViewController id="IDZ-Eh-TFA" customClass="FullNewsController" customModule="News_Reader" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="f66-Ja-8a5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="f66-Ja-8a5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -191,7 +189,7 @@
                             <outlet property="delegate" destination="IDZ-Eh-TFA" id="Cn6-ca-LEO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="News Reader" id="kC5-5b-07J"/>
+                    <navigationItem key="navigationItem" title="News Reader" largeTitleDisplayMode="always" id="kC5-5b-07J"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQR-49-Cs5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -205,13 +203,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="D9z-7i-rCm">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemTealColor"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SearchCellIdentifier" rowHeight="141" id="NeZ-xn-Q1g" customClass="SearchCell" customModule="News_Reader" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SearchCellIdentifier" rowHeight="141" id="NeZ-xn-Q1g" customClass="SearchCell" customModule="News_Reader" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="141"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NeZ-xn-Q1g" id="acD-i3-GQG">
@@ -221,17 +221,17 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMo-P2-FYr">
                                             <rect key="frame" x="5" y="5" width="404" height="131"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g9z-cW-5sF">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="g9z-cW-5sF">
                                                     <rect key="frame" x="5" y="5" width="394" height="121"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJG-FH-2nV">
                                                             <rect key="frame" x="0.0" y="0.0" width="394" height="23"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bD-OZ-6dJ" userLabel="Description Label">
-                                                            <rect key="frame" x="0.0" y="31" width="394" height="90"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bD-OZ-6dJ" userLabel="Description Label">
+                                                            <rect key="frame" x="0.0" y="33" width="394" height="88"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -239,7 +239,7 @@
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="g9z-cW-5sF" secondAttribute="trailing" constant="5" id="3N9-JS-4eZ"/>
                                                 <constraint firstItem="g9z-cW-5sF" firstAttribute="top" secondItem="vMo-P2-FYr" secondAttribute="top" constant="5" id="HOq-PS-rwD"/>
@@ -248,6 +248,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" systemColor="systemTealColor"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="vMo-P2-FYr" secondAttribute="bottom" constant="5" id="4eK-9E-3Dx"/>
                                         <constraint firstAttribute="trailing" secondItem="vMo-P2-FYr" secondAttribute="trailing" constant="5" id="XJV-bE-kbK"/>
@@ -258,6 +259,7 @@
                                 <connections>
                                     <outlet property="descriptionLabel" destination="6bD-OZ-6dJ" id="8TJ-QZ-JeM"/>
                                     <outlet property="titleLabel" destination="dJG-FH-2nV" id="Olk-TF-B8e"/>
+                                    <outlet property="viewForSearchResult" destination="vMo-P2-FYr" id="htq-vW-Rws"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -306,6 +308,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sRP-IB-YVQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemTealColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -325,6 +328,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i4D-Ut-2mq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" systemColor="systemTealColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -344,6 +349,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aRb-Om-78w">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemTealColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -363,6 +369,12 @@
         <image name="icons8-trash" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

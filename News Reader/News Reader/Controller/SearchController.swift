@@ -44,10 +44,16 @@ extension SearchController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let urlString = newsList[indexPath.row].url
+        
+        if let url = URL(string: urlString) {
+            UIApplication.shared.open(url)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         self.searchBar.endEditing(true)
     }
-    
-    
 }
 
 // MARK: - Search bar delegate

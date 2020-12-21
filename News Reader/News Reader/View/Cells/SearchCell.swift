@@ -11,7 +11,15 @@ final class SearchCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-
+    @IBOutlet weak var viewForSearchResult: UIView!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        viewForSearchResult.layer.cornerRadius = 10
+        viewForSearchResult.clipsToBounds = true
+    }
+    
 }
 
 extension String {

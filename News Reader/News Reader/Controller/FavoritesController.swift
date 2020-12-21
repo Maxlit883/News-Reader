@@ -8,7 +8,7 @@
 import UIKit
 
 final class FavoritesController: UITableViewController {
-
+    
 // MARK: - Private Properties
     
     private var favoritesList: [Source] = []
@@ -18,18 +18,45 @@ final class FavoritesController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        rows = MemoryManager.storage.getFavorites().map { Row.favoriteItem(source: $0) }
-        favoritesList = MemoryManager.storage.getFavorites()
+        configBarItem()
+        rows = CacheManager.shared.getFavorites().map { Row.favoriteItem(source: $0) }
+        favoritesList = CacheManager.shared.getFavorites()
         tableView.reloadData()
     }
+    
+// MARK: - Private Methods
+    
+    private func configBarItem() {
+        let button = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 50, height: 15)))
+        
+        button.backgroundColor = .purple
+        button.setTitle("SHOW NEWS", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(showNewsAction), for: .touchUpInside)
+        
+        navigationItem.setRightBarButton(UIBarButtonItem(customView: button), animated: false)
+    }
+    
+    @objc private func showNewsAction() {
+        performSegue(withIdentifier: "FavoritesToNews", sender: self)
+    }
+    
 }
+
+
+
 
 // MARK: - Table view data source
 
 extension FavoritesController {
     
     func removeFromFavorites(index: Int) {
-        MemoryManager.storage.removeFromFavorites(index: index)
+        CacheManager.shared.removeFromFavorites(index: index)
         
         tableView.beginUpdates()
         

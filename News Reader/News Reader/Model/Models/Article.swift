@@ -11,5 +11,5 @@ struct Article: Codable, Hashable {
     
     let title, description: String
     let urlToImage: String?
-
+    let url: String
 }

@@ -1,5 +1,5 @@
 //
-//  Storage.swift
+//  CacheManager.swift
 //  News Reader
 //
 //  Created by MAC on 15.12.2020.
@@ -7,18 +7,17 @@
 
 import Foundation
 
-struct MemoryManager {
+struct CacheManager {
     
 // MARK: - Public Properties
     
-    static var storage = MemoryManager()
+    static var shared = CacheManager()
     
 // MARK: - Private Properties
     
     private let defaults = UserDefaults.standard
     private let encoder = PropertyListEncoder()
     private let decoder = PropertyListDecoder()
-    
     
     private var favorites: [Source] {
         get {
@@ -58,8 +57,6 @@ struct MemoryManager {
         favorites.remove(at: index)
     }
     
-    
-    
 // MARK: - Public Methods for working with news
     
     func getNews()-> [Article] {
@@ -68,10 +65,6 @@ struct MemoryManager {
     
     mutating func saveNews(items: [Article]) {
         newsOffline = items
-    }
-    
-    mutating func removeNews() {
-        newsOffline.removeAll()
     }
     
 }

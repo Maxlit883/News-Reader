@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="KGk-i7-Jjw" customClass="FullNewsXibCell" customModule="News_Reader" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="FullNewsXibCell" rowHeight="300" id="KGk-i7-Jjw" customClass="FullNewsXibCell" customModule="News_Reader" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="497" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GCA-Hq-PeX" customClass="PrefetchableImageView" customModule="News_Reader" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="5" width="497" height="200"/>
+                        <rect key="frame" x="0.0" y="2" width="497" height="200"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="200" id="w1T-WQ-Mc3"/>
                         </constraints>
@@ -32,7 +32,7 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="7TM-Le-iZC">
-                        <rect key="frame" x="5" y="205" width="487" height="90"/>
+                        <rect key="frame" x="5" y="202" width="487" height="93"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKr-Nd-Z5G">
                                 <rect key="frame" x="0.0" y="0.0" width="487" height="23"/>
@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eum-JN-8Dh">
-                                <rect key="frame" x="0.0" y="29" width="487" height="61"/>
+                                <rect key="frame" x="0.0" y="29" width="487" height="64"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -49,12 +49,12 @@
                         </subviews>
                     </stackView>
                 </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" systemColor="systemTealColor"/>
                 <constraints>
                     <constraint firstItem="GCA-Hq-PeX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Aqq-1i-XJe"/>
                     <constraint firstAttribute="bottom" secondItem="7TM-Le-iZC" secondAttribute="bottom" constant="5" id="AyF-h5-hwZ"/>
                     <constraint firstAttribute="trailing" secondItem="stT-ue-G9L" secondAttribute="trailing" id="Htt-LD-7uE"/>
-                    <constraint firstItem="GCA-Hq-PeX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="KA0-g2-Fjv"/>
+                    <constraint firstItem="GCA-Hq-PeX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="KA0-g2-Fjv"/>
                     <constraint firstAttribute="trailing" secondItem="stT-ue-G9L" secondAttribute="trailing" id="SmY-Sm-Qh4"/>
                     <constraint firstAttribute="trailing" secondItem="GCA-Hq-PeX" secondAttribute="trailing" id="Zka-tC-Coo"/>
                     <constraint firstAttribute="bottom" secondItem="stT-ue-G9L" secondAttribute="bottom" id="bZJ-dQ-xRB"/>
@@ -72,12 +72,15 @@
                 <outlet property="descriptionLabel" destination="eum-JN-8Dh" id="rfs-44-Qcp"/>
                 <outlet property="mainImage" destination="GCA-Hq-PeX" id="LEI-G2-NHF"/>
             </connections>
-            <point key="canvasLocation" x="7" y="83"/>
+            <point key="canvasLocation" x="6.5217391304347831" y="82.366071428571431"/>
         </tableViewCell>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

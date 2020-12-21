@@ -10,7 +10,7 @@ import Foundation
 struct Source: Codable, Hashable {
     
     let id, name, description: String
-    let url: String
+    let url: String?
     let language, country: String
     
     static func == (lhs: Source, rhs: Source) -> Bool {

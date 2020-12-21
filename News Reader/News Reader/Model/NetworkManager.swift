@@ -12,10 +12,10 @@ final class NetworkManager {
 // MARK: - Private Properties
     
     private let baseURL = "https://newsapi.org/v2/"
-    private let requestForSources = "sources?language=ru"
+    private let requestForSources = "sources?language=en"
     private let requestForNews = "top-headlines?sources="
     private let requestForSearch = "everything?q="
-    private let apiKey = "&apiKey=ca2bd634332f4932b0d2604c6514d176"
+    private let apiKey = "&apiKey=79a70e99060a4e70ad6bdec2305e0aa4"
     
 // MARK: - Public Methods
     
@@ -85,7 +85,6 @@ final class NetworkManager {
         
         guard let encodedKeyword = urlStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
               let url = URL(string: encodedKeyword) else { return }
-        print(url)
 
         let session = URLSession.shared
         session.dataTask(with: url) {  data, _, error in
