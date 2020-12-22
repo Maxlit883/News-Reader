@@ -41,7 +41,7 @@ final class SourcesController: UITableViewController {
             case .failure(let error):
                 print(error)
             case .success(let list):
-                self?.chanelList = list
+                self?.chanelList = list.sources
                 self?.tableView.reloadData()
             }
             activityIndicator.stopAnimating()

@@ -24,5 +24,18 @@ final class FullNewsXibCell: UITableViewCell {
         bigTitleLabel.text = ""
         descriptionLabel.text = ""
     }
+    
+// MARK: - Public Methods
+    
+    func configCell(by model: Article) {
+        
+        let url = model.urlToImage.flatMap { URL(string: $0) }
+        mainImage.setImage(from: url, placeholder: UIImage(named: "placeholder"))
+        
+        bigTitleLabel.text = model.title
+        descriptionLabel.text = model.description
+    }
+    
+    
 }
 

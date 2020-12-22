@@ -48,12 +48,7 @@ extension FullNewsController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FullNewsXibCell", for: indexPath) as! FullNewsXibCell
-        
-        let url = newsList[indexPath.row].urlToImage.flatMap { URL(string: $0) }
-        cell.mainImage.setImage(from: url, placeholder: UIImage(named: "placeholder"))
-        
-        cell.bigTitleLabel.text = newsList[indexPath.row].title
-        cell.descriptionLabel.text = newsList[indexPath.row].description
+        cell.configCell(by: newsList[indexPath.row])
         
         return cell
     }

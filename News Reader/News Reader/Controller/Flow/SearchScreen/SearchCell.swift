@@ -9,9 +9,13 @@ import UIKit
 
 final class SearchCell: UITableViewCell {
 
+// MARK: - IBOutlets
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var viewForSearchResult: UIView!
+    
+// MARK: - Lifecycle
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -19,7 +23,13 @@ final class SearchCell: UITableViewCell {
         viewForSearchResult.layer.cornerRadius = 10
         viewForSearchResult.clipsToBounds = true
     }
+
+// MARK: - Public Methods
     
+    func configCell(by model: Article) {
+        titleLabel.text = model.title.withoutHtml
+        descriptionLabel.text = model.description.withoutHtml
+    }
 }
 
 extension String {

@@ -37,8 +37,7 @@ extension SearchController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCellIdentifier", for: indexPath) as! SearchCell
-        cell.titleLabel.text = newsList[indexPath.row].title.withoutHtml
-        cell.descriptionLabel.text = newsList[indexPath.row].description.withoutHtml
+        cell.configCell(by: newsList[indexPath.row])
         
         return cell
     }
@@ -67,7 +66,8 @@ extension SearchController: UISearchBarDelegate {
         activityIndicator.startAnimating()
         
         guard let keyword = searchBar.text else { return }
-        
+        searchBar.endEditing(true)
+
         self.networkManager.fetchNewsByKeywords(keyword: keyword) { [weak self] (result) in
             
             switch result {
@@ -75,9 +75,8 @@ extension SearchController: UISearchBarDelegate {
                 print(error)
                 
             case .success(let list):
-                self?.newsList = list
+                self?.newsList = list.articles
                 self?.tableView.reloadData()
-                self?.searchBar.endEditing(true)
             }
         }
         activityIndicator.stopAnimating()

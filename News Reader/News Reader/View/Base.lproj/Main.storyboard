@@ -219,10 +219,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMo-P2-FYr">
-                                            <rect key="frame" x="5" y="5" width="404" height="131"/>
+                                            <rect key="frame" x="5" y="5" width="404" height="136"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="g9z-cW-5sF">
-                                                    <rect key="frame" x="5" y="5" width="394" height="121"/>
+                                                    <rect key="frame" x="5" y="5" width="394" height="126"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJG-FH-2nV">
                                                             <rect key="frame" x="0.0" y="0.0" width="394" height="23"/>
@@ -231,7 +231,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bD-OZ-6dJ" userLabel="Description Label">
-                                                            <rect key="frame" x="0.0" y="33" width="394" height="88"/>
+                                                            <rect key="frame" x="0.0" y="33" width="394" height="93"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -250,7 +250,7 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemTealColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="vMo-P2-FYr" secondAttribute="bottom" constant="5" id="4eK-9E-3Dx"/>
+                                        <constraint firstAttribute="bottom" secondItem="vMo-P2-FYr" secondAttribute="bottom" id="4eK-9E-3Dx"/>
                                         <constraint firstAttribute="trailing" secondItem="vMo-P2-FYr" secondAttribute="trailing" constant="5" id="XJV-bE-kbK"/>
                                         <constraint firstItem="vMo-P2-FYr" firstAttribute="leading" secondItem="acD-i3-GQG" secondAttribute="leading" constant="5" id="aCE-UC-y7w"/>
                                         <constraint firstItem="vMo-P2-FYr" firstAttribute="top" secondItem="acD-i3-GQG" secondAttribute="top" constant="5" id="onR-so-bWG"/>

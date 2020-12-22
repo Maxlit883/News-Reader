@@ -18,38 +18,18 @@ final class NetworkManager {
     private let apiKey = "&apiKey=79a70e99060a4e70ad6bdec2305e0aa4"
     
 // MARK: - Public Methods
-    
-    func fetchDataResources(completion: @escaping (Result<[Source], Error>)->()) {
-        
-        let decoder = JSONDecoder()
-       
+
+    func fetchDataResources(completion: @escaping (Result<ChanelData, Error>)->()) {
         let urlStr = baseURL + requestForSources + apiKey
+        
         guard let url = URL(string: urlStr) else { return }
         
-        let session = URLSession.shared
-        session.dataTask(with: url) {  data, _, error in
-            
-            OperationQueue.main.addOperation {
-                if let error = error {
-                    completion(.failure(error))
-                } else if let data = data {
-                    do {
-                        let decodedData = try decoder.decode(ChanelData.self, from: data)
-                        completion(.success(decodedData.sources))
-                    } catch {
-                        completion(.failure(error))
-                    }
-                }
-            }
-        }.resume()
+        createDataTask(url: url, onComplete: completion)
     }
     
     func fetchDataNews(favorites: [Source], completion: @escaping ([Article])->()) {
-        
-        let decoder = JSONDecoder()
         let favoritesID = favorites.map { $0.id }
         var newsList: [Article] = []
-        
         let group = DispatchGroup()
         
         for id in favoritesID {
@@ -58,51 +38,67 @@ final class NetworkManager {
             let urlStr = baseURL + requestForNews + id + apiKey
             guard let url = URL(string: urlStr) else { return }
             
-            let session = URLSession.shared
-            session.dataTask(with: url) {  data, _, error in
-                defer {
-                    group.leave()
+            createDataTask(url: url) { (result: Result<NewsData, Error>) in
+                defer { group.leave() }
+                
+                switch result {
+                case .failure(let error):
+                    print(#function, error.localizedDescription)
+                    
+                case .success(let object):
+                    newsList.append(contentsOf: object.articles)
                 }
-                if let data = data {
-                    do {
-                        let decodedData = try decoder.decode(NewsData.self, from: data)
-                        newsList.append(contentsOf: decodedData.articles)
-                    } catch {
-                        print("Catch in fetch \(error)")
-                    }
-                }
-            }.resume()
+            }
         }
         group.notify(queue: .main) {
             completion(newsList)
         }
     }
     
-    func fetchNewsByKeywords(keyword: String, completion: @escaping (Result<[Article], Error>)->()) {
-        let decoder = JSONDecoder()
-        
+    func fetchNewsByKeywords(keyword: String, completion: @escaping (Result<NewsData, Error>)->()) {
         let urlStr = baseURL + requestForSearch + keyword + apiKey
         
         guard let encodedKeyword = urlStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
               let url = URL(string: encodedKeyword) else { return }
 
-        let session = URLSession.shared
-        session.dataTask(with: url) {  data, _, error in
-            
+        createDataTask(url: url, onComplete: completion)
+    }
+}
+
+private extension NetworkManager {
+    
+    func createDataTask<T: Decodable>(url: URL, onComplete: @escaping (Result<T, Error>) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
             OperationQueue.main.addOperation {
                 if let error = error {
-                    completion(.failure(error))
+                    onComplete(.failure(error))
                 } else if let data = data {
                     do {
-                        let decodedData = try decoder.decode(NewsData.self, from: data)
-                        completion(.success(decodedData.articles))
+                        let object = try JSONDecoder().decode(T.self, from: data)
+                        
+                        onComplete(.success(object))
                     } catch {
-                        completion(.failure(error))
+                        onComplete(.failure(error))
                     }
+                } else {
+                    onComplete(.failure(ApiError.emptyResponse))
                 }
             }
         }.resume()
     }
-    
 }
+
+enum ApiError: LocalizedError {
+    case emptyResponse
+    
+    var errorDescription: String? {
+        switch self {
+        case .emptyResponse:
+            return "Response is empty"
+        }
+    }
+}
+
+
+
 
