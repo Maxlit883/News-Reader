@@ -9,22 +9,22 @@ import UIKit
 
 final class SourcesCell: UITableViewCell {
     
-    // MARK: - IBOutlets
+// MARK: - IBOutlets
     
     @IBOutlet private weak var bigTitleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet weak var favoritesButton: UIButton!
     
-    // MARK: - Public Properties
+// MARK: - Public Properties
     
     var cellDelegate: CelllDelegateProtocol?
     
-    // MARK: - Private Properties
+// MARK: - Private Properties
     
     private let highlitedImage = UIImage(named: "icons8-star-1")
     private let usualImage = UIImage(named: "icons8-add_to_favorites")
     
-    // MARK: - Lifecycle
+// MARK: - Lifecycle
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -34,7 +34,7 @@ final class SourcesCell: UITableViewCell {
         favoritesButton.setImage(usualImage, for: .normal)
     }
     
-    // MARK: - Public Methods
+// MARK: - Public Methods
     
     func configCell(by model: Source) {
         bigTitleLabel.text = model.name
@@ -49,7 +49,7 @@ final class SourcesCell: UITableViewCell {
         }
     }
     
-    // MARK: - IBActions
+// MARK: - IBActions
     
     @IBAction func addToFavoritesButton(sender: UIButton) {
         self.cellDelegate?.addToFavorites(index: sender.tag)

@@ -14,13 +14,15 @@ final class SourcesController: UITableViewController {
     private var chanelList: [Source] = []
     private var favoritesList: [Source] = []
     private let networkManager = NetworkManager()
+    private var language: NetworkManager.Lang = .ru
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        langBarItem()
         configureRefreshControl()
-        fetchData()
+        fetchData(language: language)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,12 +33,12 @@ final class SourcesController: UITableViewController {
     
     // MARK: - Private Methods
     
-    private func fetchData() {
+    private func fetchData(language: NetworkManager.Lang) {
         
         let activityIndicator = ActivityIndicator.createIndicator(view: view)
         activityIndicator.startAnimating()
         
-        networkManager.fetchDataResources { [weak self] (result) in
+        networkManager.fetchDataResources(language: language) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 print(error)
@@ -47,6 +49,50 @@ final class SourcesController: UITableViewController {
             activityIndicator.stopAnimating()
         }
     }
+    
+    private func langBarItem() {
+        let button = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 70, height: 15)))
+        
+        button.backgroundColor = .purple
+        button.setTitle("English", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(changeLanguage), for: .touchUpInside)
+        
+        navigationItem.setRightBarButton(UIBarButtonItem(customView: button), animated: true)
+    }
+    
+    @objc private func changeLanguage() {
+        
+        switch language {
+        case .ru:
+            language = .en
+            fetchData(language: .en)
+            changeTextOnBarItem()
+        case .en:
+            language = .ru
+            fetchData(language: .ru)
+            changeTextOnBarItem()
+        }
+    }
+    
+    private func changeTextOnBarItem() {
+        switch language {
+        case .en:
+            let item = self.navigationItem.rightBarButtonItem!
+            let button = item.customView as! UIButton
+            button.setTitle("Русский", for: .normal)
+        case .ru:
+            let item = self.navigationItem.rightBarButtonItem!
+            let button = item.customView as! UIButton
+            button.setTitle("English", for: .normal)
+        }
+    }
+    
 }
 
 // MARK: - Delegate for adding to favorites
@@ -77,7 +123,7 @@ extension SourcesController: CelllDelegateProtocol {
         return cell
     }
     
-// MARK: - Refresh control
+    // MARK: - Refresh control
     
     func configureRefreshControl () {
         tableView.refreshControl = UIRefreshControl()
@@ -85,11 +131,13 @@ extension SourcesController: CelllDelegateProtocol {
     }
     
     @objc func handleRefreshControl() {
-        fetchData()
+        fetchData(language: language)
         DispatchQueue.main.async {
             self.tableView.refreshControl?.endRefreshing()
         }
     }
+    
+    
     
 }
 

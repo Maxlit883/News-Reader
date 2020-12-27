@@ -9,18 +9,26 @@ import Foundation
 
 final class NetworkManager {
     
+    enum Lang: String {
+        case ru
+        case en
+    }
+    
 // MARK: - Private Properties
     
     private let baseURL = "https://newsapi.org/v2/"
-    private let requestForSources = "sources?language=en"
+    private let requestForSources = "sources?language="
     private let requestForNews = "top-headlines?sources="
     private let requestForSearch = "everything?q="
     private let apiKey = "&apiKey=79a70e99060a4e70ad6bdec2305e0aa4"
     
+    
+    
 // MARK: - Public Methods
 
-    func fetchDataResources(completion: @escaping (Result<ChanelData, Error>)->()) {
-        let urlStr = baseURL + requestForSources + apiKey
+    func fetchDataResources(language: Lang, completion: @escaping (Result<ChanelData, Error>)->()) {
+        
+        let urlStr = baseURL + requestForSources + language.rawValue + apiKey
         
         guard let url = URL(string: urlStr) else { return }
         
