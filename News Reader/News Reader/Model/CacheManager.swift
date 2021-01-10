@@ -64,7 +64,7 @@ struct CacheManager {
     }
     
     mutating func saveNews(items: [Article]) {
-        if items != [] {
+        if !items.isEmpty {
         newsOffline = items
         }
     }

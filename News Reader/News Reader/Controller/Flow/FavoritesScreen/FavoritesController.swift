@@ -9,12 +9,12 @@ import UIKit
 
 final class FavoritesController: UITableViewController {
     
-// MARK: - Private Properties
+    // MARK: - Private Properties
     
     private var favoritesList: [Source] = []
     private var rows: [Row] = []
     
-// MARK: - Lifecycle
+    // MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,7 +24,7 @@ final class FavoritesController: UITableViewController {
         tableView.reloadData()
     }
     
-// MARK: - Private Methods
+    // MARK: - Private Methods
     
     private func configBarItem() {
         let button = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 50, height: 15)))
@@ -58,7 +58,7 @@ extension FavoritesController {
         tableView.beginUpdates()
         
         rows.remove(at: index)
-        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .top)
+        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
         
         tableView.endUpdates()
     }
@@ -75,7 +75,7 @@ extension FavoritesController {
             cell.configCell(by: item)
             
             cell.onRemove = { [unowned self, item] in
-
+                
                 let itemIndex = self.rows.firstIndex(where: {
                     switch $0 {
                     case .favoriteItem(let source) where source == item:

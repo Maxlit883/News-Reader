@@ -198,9 +198,9 @@
 		04631F50258F964200D96ADF /* AdditionalViews */ = {
 			isa = PBXGroup;
 			children = (
-				04631F61258FA1DF00D96ADF /* PrefetchableImageView.swift */,
-				0468EB71258CF6F80035C030 /* GradientView.swift */,
 				045FC58A259136B6003D9CDD /* ActivityIndicator.swift */,
+				0468EB71258CF6F80035C030 /* GradientView.swift */,
+				04631F61258FA1DF00D96ADF /* PrefetchableImageView.swift */,
 			);
 			path = AdditionalViews;
 			sourceTree = "<group>";
@@ -246,7 +246,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1210;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					041A64082587A8A800DE01C2 = {
 						CreatedOnToolsVersion = 12.1;
@@ -461,7 +461,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8QU8WR3NHA;
 				INFOPLIST_FILE = "News Reader/Support/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -481,7 +481,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8QU8WR3NHA;
 				INFOPLIST_FILE = "News Reader/Support/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

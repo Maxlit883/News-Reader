@@ -22,8 +22,6 @@ final class NetworkManager {
     private let requestForSearch = "everything?q="
     private let apiKey = "&apiKey=79a70e99060a4e70ad6bdec2305e0aa4"
     
-    
-    
 // MARK: - Public Methods
 
     func fetchDataResources(language: Lang, completion: @escaping (Result<ChanelData, Error>)->()) {

@@ -35,6 +35,9 @@ final class SourcesController: UITableViewController {
     
     private func fetchData(language: NetworkManager.Lang) {
         
+        chanelList.removeAll()
+        tableView.reloadData()
+        
         let activityIndicator = ActivityIndicator.createIndicator(view: view)
         activityIndicator.startAnimating()
         
